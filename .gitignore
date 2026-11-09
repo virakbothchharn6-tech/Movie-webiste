@@ -1,0 +1,6 @@
+﻿frontend-user/node_modules/
+frontend-user/build/
+backend/venv/
+backend/.env
+**/__pycache__/
+*.pyc
