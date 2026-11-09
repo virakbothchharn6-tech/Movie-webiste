@@ -1,0 +1,26 @@
+export const translations = {
+  en: {
+    home: "Home",
+    movies: "Movies",
+    tvShows: "TV Shows",
+    trending: "Trending",
+    myList: "My List",
+    searchPlaceholder: "Search movies...",
+    signIn: "Sign In",
+    watchNow: "Watch Now",
+    loading: "Loading...",
+    noOverview: "No description available.",
+  },
+  km: {
+    home: "ទំព័រដើម",
+    movies: "ភាពយន្ត",
+    tvShows: "កម្មវិធីទូរទស្សន៍",
+    trending: "កំពុងពេញនិយម",
+    myList: "បញ្ជីរបស់ខ្ញុំ",
+    searchPlaceholder: "ស្វែងរកភាពយន្ត...",
+    signIn: "ចូលគណនី",
+    watchNow: "ទស្សនាឥឡូវនេះ",
+    loading: "កំពុងផ្ទុក...",
+    noOverview: "គ្មានការពិពណ៌នាជាភាសាខ្មែរឡើយ។",
+  },
+};
