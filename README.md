@@ -1,6 +1,6 @@
 # 🎬 Ousa Movie
 
-A movie and TV streaming website with a **React** frontend and a **FastAPI** backend. It supports **Khmer** and **English**, user accounts, and movie data from the **TMDB API**.
+A movie and TV streaming website built with **React** (frontend) and **FastAPI** (backend). It supports **Khmer** and **English**, user login, an admin dashboard, and movie data from the **TMDB API**.
 
 ![Home page](docs/screenshots/home.png)
 
@@ -9,12 +9,13 @@ A movie and TV streaming website with a **React** frontend and a **FastAPI** bac
 - 🎞️ Hero slideshow with autoplay and a **Watch Now** button
 - 📂 Categories: **Home, Movies, Anime, TV Shows, Trending**
 - 🔍 Search movies and TV shows
-- 🌐 Language switcher: **Khmer (KH)** and **English (EN)** with flag icons
-- ▶️ Movie player modal with multiple streaming servers (VidSrc, MultiEmbed, EmbedSu)
-- ⭐ Ratings and release year on every movie card
-- 🔐 User authentication: register, login, logout (FastAPI)
+- 🌐 Khmer (KH) and English (EN) language switcher with flag icons
+- ▶️ Watch modal with multiple streaming servers (VidSrc, MultiEmbed, EmbedSu)
+- ⭐ Rating and release year on every movie card
+- 🔐 Login and register modal, with username and logout in the header
+- 🛠️ Admin dashboard to manage movies
 - 📱 Responsive design for desktop and mobile
-- 🔤 Khmer font support (Kantumruy Pro) alongside Inter
+- 🔤 Khmer font support (Kantumruy Pro) together with Inter
 
 ## 🛠️ Tech Stack
 
@@ -25,19 +26,53 @@ A movie and TV streaming website with a **React** frontend and a **FastAPI** bac
 | Movie data | [TMDB API](https://www.themoviedb.org/documentation/api) |
 | Fonts | Inter, Kantumruy Pro (Google Fonts) |
 
+## 📸 Screenshots
+
+### Home
+
+![Home](docs/screenshots/home.png)
+
+### Khmer language
+
+![Khmer home](docs/screenshots/khmer-home.png)
+
+### Movies
+
+![Movies](docs/screenshots/movie.png)
+
+### Anime
+
+![Anime](docs/screenshots/anime.png)
+
+### Watch movie
+
+![Watch movie](docs/screenshots/movie-play.png)
+
+### Login / Register
+
+![Auth](docs/screenshots/auth.png)
+
 ## 📁 Project Structure
 
 ```
 Movie Frontend and backend/
-├── frontend-user/        # React app
+├── README.md
+├── .gitignore
+├── docs/
+│   └── screenshots/          # README images
+├── frontend-user/            # React app
 │   ├── public/
 │   └── src/
-│       ├── components/   # Header, Slideshow, translations, ...
+│       ├── components/       # Header, Slideshow, Footer, WatchModal,
+│       │                     # AuthModal, AdminDashboard, translations
 │       ├── App.js
 │       └── index.js
-├── backend/              # FastAPI app
-│   └── ...
-└── .gitignore
+└── backend/                  # FastAPI app
+    ├── database.py           # Database connection
+    ├── models/               # Database models (movie.py, ...)
+    ├── schemas/              # Pydantic schemas (movie.py, ...)
+    ├── crud/                 # Database operations (movie.py, ...)
+    └── ...                   # Routes (movies.py, auth, ...)
 ```
 
 ## 🚀 Getting Started
@@ -70,10 +105,10 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-The API runs at `http://localhost:8000`.
-Interactive API docs (Swagger): `http://localhost:8000/docs`
+- API: `http://localhost:8000`
+- Swagger docs: `http://localhost:8000/docs`
 
-> If your entry file or app name is different, change `main:app` to match it.
+> If your entry file has a different name, change `main:app` to match it.
 
 ### 3. Run the frontend (React)
 
@@ -105,41 +140,35 @@ SECRET_KEY=your_secret_key
 # Add your database settings here
 ```
 
-After you change a `.env` file, restart `npm start` or `uvicorn`.
+Restart `npm start` or `uvicorn` after changing a `.env` file.
 
-## 🔌 API Endpoints (backend)
+## 🔌 API Endpoints
+
+The full list with request examples is in the Swagger docs at `/docs`.
 
 | Method | Endpoint | Description |
 | --- | --- | --- |
 | POST | `/register` | Create a new account |
 | POST | `/login` | Log in and get a token |
-| POST | `/logout` | Log out |
+| GET | `/movies` | Get all movies |
+| POST | `/movies` | Add a movie (admin) |
+| PUT | `/movies/{id}` | Update a movie (admin) |
+| DELETE | `/movies/{id}` | Delete a movie (admin) |
 
-> Update this table to match your real routes. The full list is available at `/docs`.
-
-## 📸 Screenshots
-
-| Home | Player | Khmer UI |
-| --- | --- | --- |
-| ![Home](docs/screenshots/home.png) | ![Player](docs/screenshots/player.png) | ![Khmer](docs/screenshots/khmer.png) |
+> Change this table to match your real routes.
 
 ## 🗺️ Roadmap
 
 - [ ] My List (save favorite movies)
 - [ ] Movie detail page
 - [ ] Watch history
-- [ ] Admin dashboard
 - [ ] Deploy frontend and backend
 
 ## ⚠️ Disclaimer
 
-This project is for **learning purposes only**. Movie information and images come from TMDB. This product uses the TMDB API but is not endorsed or certified by TMDB. The video player uses third-party embed servers, and this project does not host any video files.
+This project is for **learning purposes only**. Movie information and images come from TMDB. This product uses the TMDB API but is not endorsed or certified by TMDB. The player uses third-party embed servers, and this project does not host any video files.
 
 ## 👤 Author
 
 **Virakboth Chharn**
 GitHub: [@virakbothchharn6-tech](https://github.com/virakbothchharn6-tech)
-
-## 📄 License
-
-This project is licensed under the MIT License. Add a `LICENSE` file if you want to use this license.
